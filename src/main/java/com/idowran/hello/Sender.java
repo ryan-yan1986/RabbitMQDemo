@@ -3,11 +3,10 @@ package com.idowran.hello;
 import com.idowran.utils.ConnextionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.sun.istack.internal.localization.NullLocalizable;
 
 public class Sender {
 
-    private final static String QUEUE = "testHello"; // 队列的名字
+    private final static String QUEUE = "testRyan"; // 队列的名字
 
     public static void main(String[] args) throws Exception{
         // 获取连接
@@ -21,8 +20,9 @@ public class Sender {
         // 参数4 是否自动删除
         // 参数5 我们的一些其他参数
         channel.queueDeclare(QUEUE, false, false, false, null);
-        // 发送内容
-        channel.basicPublish("", QUEUE, null, "logId:1,sync:1".getBytes());
+        
+        // 发送内容, 这里的路由key要与队列名一致 (交换机名,  路由key,  属性, 信息内容)
+        channel.basicPublish("", QUEUE, null, "logId:105, sync:true".getBytes());
 
         // 关闭通道和连接
         channel.close();

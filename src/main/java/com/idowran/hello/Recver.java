@@ -6,7 +6,7 @@ import com.rabbitmq.client.*;
 import java.io.IOException;
 
 public class Recver {
-    private final static String QUEUE = "testHello"; // 队列的名字
+    private final static String QUEUE = "testRyan"; // 队列的名字
 
     public static void main(String[] args) throws Exception{
         // 获取连接, 创建通道
@@ -24,7 +24,11 @@ public class Recver {
                 String routingKey   = envelope.getRoutingKey();
                 String contentType  = properties.getContentType();
                 long deliveryTag    = envelope.getDeliveryTag();
-                System.out.println(new String(body));
+                System.out.println("body: " + new String(body));
+                
+                System.out.println("routingKey: " + routingKey);
+                System.out.println("contentType: " + contentType);
+                System.out.println("deliveryTag: " + deliveryTag);
             }
         });
     }

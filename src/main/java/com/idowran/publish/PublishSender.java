@@ -15,6 +15,7 @@ public class PublishSender {
         Channel channel = connection.createChannel();
         // 定义一个交换机, fanout 发布订阅模式
         channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
+        
         // 发送内容
         // 因为交换机是没有保存消息的功能的, 所以如果没有消费者, 消息会丢失
         channel.basicPublish(EXCHANGE_NAME, "", null, "发布/订阅模式的消息".getBytes());

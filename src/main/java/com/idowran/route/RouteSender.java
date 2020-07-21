@@ -15,6 +15,7 @@ public class RouteSender {
         Channel channel = connection.createChannel();
         // 定义一个交换机, direct 路由模式
         channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+        
         // 发送内容
         channel.basicPublish(EXCHANGE_NAME, "key1", null, "路由模式的消息1".getBytes());
         channel.basicPublish(EXCHANGE_NAME, "key2", null, "路由模式的消息2".getBytes());

@@ -18,7 +18,7 @@ public class PublishRecver2 {
         // 将队列绑定到交换机
         channel.queueBind(QUEUE, EXCHANGE_NAME, "");
         channel.basicQos(1);
-
+        
         Consumer consumer = new DefaultConsumer(channel){
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {

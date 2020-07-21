@@ -19,6 +19,7 @@ public class WorkSender {
         // 参数4 是否自动删除
         // 参数5 我们的一些其他参数
         channel.queueDeclare(QUEUE, false, false, false, null);
+        
         // 发送100条消息
         for (int i = 0; i < 100; i++) {
             String message = "message: " + i;
